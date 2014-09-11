@@ -1,9 +1,19 @@
-{{hello}}
+
 
 <ul class="list-group">
   <li ng-repeat="todo in todos" class="list-group-item">
     <span class="badge">pending</span>
-    <h4 contenteditable="true">{{todo.content}}</h4>
+    <h4 contenteditable ng-model="todo.content"
+      strip-br="true" required></h4>
   </li>
 </ul>
+
+<ul class="list-group">
+  <li ng-repeat="todo in todos" class="list-group-item">
+    <span class="badge">pending</span>
+    <h4>{{todo.content}}</h4>
+  </li>
+</ul>
+
+<button ng-click="output()">Click</button>
 

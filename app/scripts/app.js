@@ -10,6 +10,7 @@
  */
 angular
   .module('tojoApp', [
+    'ngSanitize',
     'ngAnimate',
     'ngCookies',
     'ngResource',

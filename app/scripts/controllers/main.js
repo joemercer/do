@@ -18,4 +18,8 @@ angular.module('tojoApp')
     	content: 'Do thing 3'
     }];
 
+    $scope.output = function() {
+    	console.log($scope.todos);
+    };
+
   });
