@@ -6,6 +6,12 @@
     <h4 contenteditable ng-model="todo.content"
       strip-br="true" required></h4>
   </li>
+  <li class="list-group-item">
+    <span class="badge">pending</span>
+    <h4 contenteditable ng-model="newTodo.content"
+      strip-br="true" required 
+      ng-keydown="addNewTodo($event)"></h4>
+  </li>
 </ul>
 
 <ul class="list-group">
@@ -14,6 +20,8 @@
     <h4>{{todo.content}}</h4>
   </li>
 </ul>
+
+{{newTodo.content}}
 
 <button ng-click="output()">Click</button>
 

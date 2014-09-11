@@ -24,4 +24,20 @@ angular.module('tojoApp')
     	});
     };
 
+    $scope.newTodo = {
+    	content: ''
+    };
+    $scope.addNewTodo = function(e) {
+    	// enter key pressed
+    	// => add the todo
+    	if (e.keyCode === 13) {
+    		e.preventDefault();
+    		$scope.todos.push($scope.newTodo);
+    		$scope.newTodo = {
+    			content: ''
+    		};
+	    }
+    };
+
+
   });
