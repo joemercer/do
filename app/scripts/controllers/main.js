@@ -19,7 +19,9 @@ angular.module('tojoApp')
     }];
 
     $scope.output = function() {
-    	console.log($scope.todos);
+    	$scope.todos.forEach(function(todo){
+    		console.log(todo.content);
+    	});
     };
 
   });
