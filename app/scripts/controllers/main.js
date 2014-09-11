@@ -10,16 +10,12 @@
 angular.module('tojoApp')
   .controller('MainCtrl', function ($scope) {
 
-  	console.log('hello');
-
-  	$scope.hello = 'hello';
-
-    $scope.todos = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-    console.log($scope.todos);
+    $scope.todos = [{
+    	content: 'Do thing 1'
+    }, {
+    	content: 'Do thing 2'
+    }, {
+    	content: 'Do thing 3'
+    }];
 
   });
