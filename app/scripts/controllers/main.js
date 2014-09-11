@@ -28,9 +28,8 @@ angular.module('tojoApp')
     	content: ''
     };
     $scope.addNewTodo = function(e) {
-    	// enter key pressed
+    	// enter key pressed w/o shift key
     	// => add the todo
-    	debugger;
     	if (e.keyCode === 13 && !e.shiftKey) {
     		e.preventDefault();
     		$scope.todos.push($scope.newTodo);
