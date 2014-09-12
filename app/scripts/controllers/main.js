@@ -15,7 +15,7 @@ angular.module('tojoApp')
     }, {
     	content: 'Do thing 2'
     }, {
-    	content: 'Do thing 3'
+    	content: 'http://vitalets.github.io/angular-xeditable/'
     }];
 
     $scope.output = function() {
@@ -38,6 +38,8 @@ angular.module('tojoApp')
     		};
 	    }
     };
+
+    $scope.things = ['1','2','3','4'];
 
 
   });

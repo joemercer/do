@@ -1,7 +1,7 @@
 
 
-<ul class="list-group">
-  <li ng-repeat="todo in todos" class="list-group-item">
+<ul sv-root sv-part="todos" class="list-group">
+  <li ng-repeat="todo in todos" sv-element class="list-group-item">
     <span class="badge">pending</span>
     <h4 contenteditable ng-model="todo.content"
       strip-br="true" required></h4>
@@ -24,4 +24,3 @@
 {{newTodo.content}}
 
 <button ng-click="output()">Click</button>
-

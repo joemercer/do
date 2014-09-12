@@ -10,13 +10,13 @@
  */
 angular
   .module('tojoApp', [
-    'ngSanitize',
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angular-sortable-view'
   ])
   .config(function ($routeProvider) {
     $routeProvider
