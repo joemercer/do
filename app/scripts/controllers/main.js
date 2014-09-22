@@ -18,6 +18,15 @@ angular.module('tojoApp')
     	content: 'http://vitalets.github.io/angular-xeditable/'
     }];
 
+    $scope.removeTodoOnBackspace = function(e, todo) {
+        // backspace pressed with no content
+        // => remove the todo
+        if (e.keyCode === 8 && !todo.content) {
+            e.preventDefault();
+            $scope.todos.splice($scope.todos.indexOf(todo), 1);
+        }
+    };
+
     $scope.output = function() {
     	$scope.todos.forEach(function(todo){
     		console.log(todo.content);

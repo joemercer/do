@@ -4,7 +4,8 @@
   <li ng-repeat="todo in todos" sv-element class="list-group-item">
     <span class="badge">pending</span>
     <h4 contenteditable ng-model="todo.content"
-      strip-br="true" required></h4>
+      strip-br="true" required
+      ng-keydown="removeTodoOnBackspace($event, todo)"></h4>
   </li>
   <li class="list-group-item">
     <span class="badge">pending</span>
