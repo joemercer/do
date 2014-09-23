@@ -22,7 +22,7 @@ angular.module('tojoApp')
     };
 
     $scope.output = function() {
-    	$scope.todos.forEach(function(todo){
+    	todos.snapshot.forEach(function(todo){
     		console.log(todo.content);
     	});
     };
@@ -41,8 +41,6 @@ angular.module('tojoApp')
     		};
 	    }
     };
-
-    $scope.things = ['1','2','3','4'];
 
 
   });
