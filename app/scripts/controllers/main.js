@@ -8,15 +8,9 @@
  * Controller of the tojoApp
  */
 angular.module('tojoApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, todos) {
 
-    $scope.todos = [{
-    	content: 'Do thing 1'
-    }, {
-    	content: 'Do thing 2'
-    }, {
-    	content: 'http://vitalets.github.io/angular-xeditable/'
-    }];
+    $scope.todos = todos.snapshot;
 
     $scope.removeTodoOnBackspace = function(e, todo) {
         // backspace pressed with no content
