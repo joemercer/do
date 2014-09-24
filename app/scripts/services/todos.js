@@ -12,6 +12,8 @@ angular.module('tojoApp')
   .service('todos', function todos() {
     // AngularJS will instantiate a singleton by calling "new" on this function
   
+    this.onInitialized = null;
+
   	// the default values are initialized here
     this._snapshot = [{
     	get: function() {
@@ -90,10 +92,14 @@ angular.module('tojoApp')
 		    }
 
 		    this.data = datastore.getTable('todos');
+		    console.log('connected');
 
-		    console.log('do sync');
 		    this.syncUp();
 		    this.syncDown();
+
+		    if (this.onInitialized) {
+		    	this.onInitialized();
+		    }
 			}));
 		}
 

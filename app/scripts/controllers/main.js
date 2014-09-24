@@ -11,6 +11,9 @@ angular.module('tojoApp')
   .controller('MainCtrl', function ($scope, todos) {
 
 		$scope.todos = todos;
+		todos.onInitialized = function() {
+			$scope.$apply();
+		};
 
 		$scope.newTodo = {
 		  content: ''
