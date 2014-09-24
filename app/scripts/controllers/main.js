@@ -17,6 +17,29 @@ angular.module('tojoApp')
 			$scope.$apply();
 		};
 
+		$scope.update = function(e, todo) {
+			// enter key pressed with no shift
+		  // => focus on insert new
+			if (e.keyCode === 13 && !e.shiftKey) {
+				e.preventDefault();
+				// $(e.target).blur();
+				// $('.add-new-todo').focus();
+			}
+			// back key pressed with no content
+		  // => remove the todo
+		  else if (e.keyCode === 8 && !todo.content) {
+				e.preventDefault();
+				// $(e.target).blur();
+				// $('.add-new-todo').focus();
+				todo.deleteRecord();
+				$scope.todos.syncDown();
+		  }
+		  else {
+				// update content
+		  	todo.set('content', todo.content);
+		  }
+		};
+
 		$scope.newTodo = {
 		  content: ''
 		};

@@ -3,14 +3,17 @@
 <ul class="list-group">
   <li ng-repeat="todo in todos.snapshot()" class="list-group-item">
     <span class="badge">pending</span>
-    <h4>{{todo.get('content')}}</h4>
+    <h4 contenteditable ng-model="todo.content" 
+    strip-br="true" required 
+    ng-keydown="update($event, todo)"></h4>
   </li>
-  
+
   <li class="list-group-item">
     <span class="badge">pending</span>
     <h4 contenteditable ng-model="newTodo.content"
       strip-br="true" required 
-      ng-keydown="addNewTodo($event)"></h4>
+      ng-keydown="addNewTodo($event)" 
+      ng-class="'add-new-todo'" ></h4>
   </li>
 </ul>
 
@@ -19,3 +22,8 @@
 <button ng-click="output()">Click</button>
 
 {{newTodo.content}}
+
+<li ng-repeat="todo in todos.snapshot()" class="list-group-item">
+  <span class="badge">pending</span>
+  <h4 ng-bind="todo.content"></h4>
+</li>

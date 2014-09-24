@@ -1,4 +1,5 @@
 /*global Dropbox:false */
+/*global $:false */
 'use strict';
 
 /**
@@ -16,17 +17,11 @@ angular.module('tojoApp')
 
   	// the default values are initialized here
     this._snapshot = [{
-    	get: function() {
-    		return 'Do thing 1';
-    	}
+    	content: 'Do thing 1'
     }, {
-    	get: function() {
-    		return 'Do thing 2';
-    	}
+    	content: 'Do thing 2'
     }, {
-    	get: function() {
-    		return 'http://vitalets.github.io/angular-xeditable/';
-    	}
+    	content: 'http://vitalets.github.io/angular-xeditable/'
     }];
 
     this.snapshot = function() {
@@ -53,7 +48,14 @@ angular.module('tojoApp')
     		return;
     	}
 
-    	this._snapshot = this.data.query();
+    	this._snapshot = this.data.query().map(function(t){
+    		// we add a raw field which has a copy of the values
+    		// !!! we don't need all these fields
+    		return $.extend(t, {
+    			raw: t._rawFieldValues(),
+    			content: t._rawFieldValues().content
+    		});
+    	});
 
     // 	this._snapshot = this.data.query().map(function(t){
     // 		// !!! does not work for arrays,
