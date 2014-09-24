@@ -13,22 +13,67 @@ angular.module('tojoApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
   
   	// the default values are initialized here
-    this.snapshot = [{
-    	content: 'Do thing 1'
+    this._snapshot = [{
+    	get: function() {
+    		return 'Do thing 1';
+    	}
     }, {
-    	content: 'Do thing 2'
+    	get: function() {
+    		return 'Do thing 2';
+    	}
     }, {
-    	content: 'http://vitalets.github.io/angular-xeditable/'
+    	get: function() {
+    		return 'http://vitalets.github.io/angular-xeditable/';
+    	}
     }];
 
-    this.backlog = [];
-
-    this.syncDown = function() {
-    	// if this fails 
+    this.snapshot = function() {
+    	return this._snapshot;
     };
 
-    this.syncUp = function() {
+    this.data = null;
+    this.backlog = [];
 
+    this.insert = function(todo) {
+    	if (this.data) {
+    		this.data.insert(todo);
+    		this.syncDown();
+    	}
+    	else {
+    		this.backlog.push(todo);
+    	}
+    };
+
+    // syncs from dropbox -> snapshot
+    this.syncDown = function() {
+    	// if no data, then can't do a sync
+    	if (!this.data) {
+    		return;
+    	}
+
+    	this._snapshot = this.data.query();
+
+    // 	this._snapshot = this.data.query().map(function(t){
+    // 		// !!! does not work for arrays,
+				// // instead use ._array()
+				// // but does work if the array is a value of part of the object
+				// var toReturn = t._rawFieldValues();
+				// toReturn.raw = t;
+				// return toReturn;
+    // 	});
+    };
+
+    // syncs from backlog -> dropbox
+    this.syncUp = function() {
+    	// if no data, then can't do a sync
+    	if (!this.data) {
+    		return;
+    	}
+
+    	for (var i=0; i<this.backlog.length; ++i) {
+	    	this.data.insert(this.backlog[i]);
+	    }
+	    this.backlog = [];
     };
 
     this.dropbox = new Dropbox.Client({
@@ -46,14 +91,9 @@ angular.module('tojoApp')
 
 		    this.data = datastore.getTable('todos');
 
-
-
-		    // immediately fill it with stuff from the backlog
-		    // !!! this can be replaced with immediately call a syncUp, or syncDown
-		    for (var i=0; i<this.backlog.length; ++i) {
-		    	this.data.insert(this.backlog[i]);
-		    }
-		    this.backlog = [];
+		    console.log('do sync');
+		    this.syncUp();
+		    this.syncDown();
 			}));
 		}
 

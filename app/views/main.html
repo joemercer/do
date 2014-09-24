@@ -1,12 +1,11 @@
 
 
-<ul sv-root sv-part="todos" class="list-group">
-  <li ng-repeat="todo in todos" sv-element class="list-group-item">
+<ul class="list-group">
+  <li ng-repeat="todo in todos.snapshot()" class="list-group-item">
     <span class="badge">pending</span>
-    <h4 contenteditable ng-model="todo.content"
-      strip-br="true" required
-      ng-keydown="removeTodoOnBackspace($event, todo)"></h4>
+    <h4>{{todo.get('content')}}</h4>
   </li>
+  
   <li class="list-group-item">
     <span class="badge">pending</span>
     <h4 contenteditable ng-model="newTodo.content"
@@ -15,13 +14,8 @@
   </li>
 </ul>
 
-<ul class="list-group">
-  <li ng-repeat="todo in todos" class="list-group-item">
-    <span class="badge">pending</span>
-    <h4>{{todo.content}}</h4>
-  </li>
-</ul>
 
-{{newTodo.content}}
 
 <button ng-click="output()">Click</button>
+
+{{newTodo.content}}
