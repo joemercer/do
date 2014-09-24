@@ -11,6 +11,8 @@ angular.module('tojoApp')
   .controller('MainCtrl', function ($scope, todos) {
 
 		$scope.todos = todos;
+		// let the todos service be in charge of
+		// notifying the view when it has data
 		todos.onInitialized = function() {
 			$scope.$apply();
 		};
@@ -24,7 +26,6 @@ angular.module('tojoApp')
 		  if (e.keyCode === 13 && !e.shiftKey) {
 				e.preventDefault();
 				todos.insert($scope.newTodo);
-				// $scope.todos.push($scope.newTodo);
 				$scope.newTodo = {
 				  content: ''
 				};

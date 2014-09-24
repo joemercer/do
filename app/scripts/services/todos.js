@@ -78,12 +78,14 @@ angular.module('tojoApp')
 	    this.backlog = [];
     };
 
+    // authenticate dropbox
     this.dropbox = new Dropbox.Client({
   		key: 'dg7kh1gl7wv9gj2',
   		secret: 'hp1rh6n8ia9fabr',
   		token: '05PF-9qnGb8AAAAAAAAABEI3DKas5jHeRJcOMxH_U-I4a-JLcDkTS-ww3tTiEkWu'
   	});
 
+    // set up dropbox
 		if (this.dropbox.isAuthenticated()) {
 		  var datastoreManager = this.dropbox.getDatastoreManager();
 			datastoreManager.openDefaultDatastore(angular.bind(this, function (error, datastore) {
