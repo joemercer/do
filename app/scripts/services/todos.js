@@ -17,11 +17,7 @@ angular.module('tojoApp')
 
   	// the default values are initialized here
     this._snapshot = [{
-    	content: 'Do thing 1'
-    }, {
-    	content: 'Do thing 2'
-    }, {
-    	content: 'http://vitalets.github.io/angular-xeditable/'
+    	content: 'Wait a sec for it to connect to the cloud'
     }];
 
     this.snapshot = function() {
