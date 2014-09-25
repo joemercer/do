@@ -6,14 +6,16 @@
     <h4 contenteditable ng-model="newTodo.content"
       strip-br="true" required 
       ng-keydown="addNewTodo($event)" 
-      ng-class="'add-new-todo'" ></h4>
+      ng-class="'add-new-todo'"></h4>
   </li>
   
   <li ng-repeat="todo in todos.snapshot()" class="list-group-item">
     <span class="badge">pending</span>
+    <button ng-click="complete(todo)" class="btn btn-default">Done</button>
     <h4 contenteditable ng-model="todo.content" 
     strip-br="true" required 
-    ng-keydown="update($event, todo)"></h4>
+    ng-keydown="update($event, todo)" 
+    ng-class="'inline'"></h4>
   </li>
 </ul>
 

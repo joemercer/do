@@ -44,7 +44,7 @@ angular.module('tojoApp')
     		return;
     	}
 
-    	this._snapshot = this.data.query().map(function(t){
+    	this._snapshot = this.data.query({completed: false}).map(function(t){
     		// we add a raw field which has a copy of the values
     		// !!! we don't need all these fields
     		return $.extend(t, {

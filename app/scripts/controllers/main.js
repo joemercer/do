@@ -40,8 +40,15 @@ angular.module('tojoApp')
 		  }
 		};
 
+		$scope.complete = function(todo) {
+			todo.set('completed', true);
+			console.log(todo, 'completed');
+			$scope.todos.syncDown();
+		};
+
 		$scope.newTodo = {
-		  content: ''
+		  content: '',
+		  completed: false
 		};
 		$scope.addNewTodo = function(e) {
 		  // enter key pressed w/o shift key
@@ -50,7 +57,8 @@ angular.module('tojoApp')
 				e.preventDefault();
 				todos.insert($scope.newTodo);
 				$scope.newTodo = {
-				  content: ''
+				  content: '',
+				  completed: false
 				};
 		  }
 		};
