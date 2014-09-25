@@ -1,3 +1,7 @@
+.inline {
+  display: inline-block;
+}
+
 html {
   height: 100%;
 }
