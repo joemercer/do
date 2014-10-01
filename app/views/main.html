@@ -13,7 +13,7 @@
 <ul class="list-group">
   <li ng-repeat="todo in todos.snapshot()" class="todo list-group-item">
     <button ng-click="complete(todo)" class="todo-do-btn btn btn-default pull-left">do</button>
-    <button ng-click="" class="todo-snooze-btn btn btn-default pull-right">snooze</button>
+    <button ng-click="snooze(todo)" class="todo-snooze-btn btn btn-default pull-right">snooze</button>
     <h4 contenteditable ng-model="todo.content" 
     strip-br="true" required 
     ng-keydown="update($event, todo)" 

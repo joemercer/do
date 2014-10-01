@@ -42,13 +42,26 @@ angular.module('tojoApp')
 
 		$scope.complete = function(todo) {
 			todo.set('completed', true);
+			todo.set('completedAt', (new Date()).getTime());
 			console.log(todo, 'completed');
+			$scope.todos.syncDown();
+		};
+
+		$scope.snooze = function(todo) {
+			todo.set('snoozed', true);
+			// unsnooze in 5 minutes
+			todo.set('unsnoozeAt', (new Date()).getTime() + (5*60*1000));
+			// todo.set('unsnoozeAt', (new Date()).getTime() + (15*1000));
+			console.log(todo, 'snoozed');
 			$scope.todos.syncDown();
 		};
 
 		$scope.newTodo = {
 		  content: '',
-		  completed: false
+		  timeAdded: (new Date().getTime()),
+		  completed: false,
+		  snoozed: false,
+		  unsnoozeAt: (new Date().getTime())
 		};
 		$scope.addNewTodo = function(e) {
 		  // enter key pressed w/o shift key
@@ -58,7 +71,10 @@ angular.module('tojoApp')
 				todos.insert($scope.newTodo);
 				$scope.newTodo = {
 				  content: '',
-				  completed: false
+				  timeAdded: (new Date().getTime()),
+				  completed: false,
+				  snoozed: false,
+		  		unsnoozeAt: (new Date().getTime())
 				};
 		  }
 		};
