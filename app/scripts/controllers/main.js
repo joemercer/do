@@ -60,6 +60,7 @@ angular.module('tojoApp')
 		  content: '',
 		  timeAdded: (new Date().getTime()),
 		  completed: false,
+		  completedAt: null,
 		  snoozed: false,
 		  unsnoozeAt: (new Date().getTime())
 		};
@@ -73,6 +74,7 @@ angular.module('tojoApp')
 				  content: '',
 				  timeAdded: (new Date().getTime()),
 				  completed: false,
+				  completedAt: null,
 				  snoozed: false,
 		  		unsnoozeAt: (new Date().getTime())
 				};
