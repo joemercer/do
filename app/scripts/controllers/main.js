@@ -50,8 +50,9 @@ angular.module('tojoApp')
 		$scope.snooze = function(todo) {
 			todo.set('snoozed', true);
 			// unsnooze in 5 minutes
-			todo.set('unsnoozeAt', (new Date()).getTime() + (5*60*1000));
-			// todo.set('unsnoozeAt', (new Date()).getTime() + (15*1000));
+			// todo.set('unsnoozeAt', (new Date()).getTime() + (5*60*1000));
+			todo.set('unsnoozeAt', (new Date()).getTime() + (15*1000));
+			todo.set('score', todo.get('score') - 1);
 			console.log(todo, 'snoozed');
 			$scope.todos.syncDown();
 		};
@@ -59,6 +60,7 @@ angular.module('tojoApp')
 		$scope.newTodo = {
 		  content: '',
 		  timeAdded: (new Date().getTime()),
+		  score: 0,
 		  completed: false,
 		  completedAt: null,
 		  snoozed: false,
@@ -73,6 +75,7 @@ angular.module('tojoApp')
 				$scope.newTodo = {
 				  content: '',
 				  timeAdded: (new Date().getTime()),
+				  score: 0,
 				  completed: false,
 				  completedAt: null,
 				  snoozed: false,

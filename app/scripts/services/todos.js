@@ -41,8 +41,15 @@ angular.module('tojoApp')
 
       return true;
     }).sort(function(a, b){
-      // sort by date added (most recent first)
-      return b.get('timeAdded') - a.get('timeAdded');
+      // sort by score (higher score first)
+      var scoreDelta = b.get('score') - a.get('score');
+
+      if (scoreDelta === 0) {
+        // then sort by date added (most recent first)
+        return b.get('timeAdded') - a.get('timeAdded');
+      }
+
+      return scoreDelta;
     });
   };
 
