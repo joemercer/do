@@ -3,19 +3,21 @@
 }
 
 
+.todo {
+	min-height: 56px;
+}
 
 .todo-content {
   margin: 0px;
 }
 
 
-.badge {
-  cursor: pointer;
+.todo-do-btn {
+	margin-right: 10px;
 }
 
-.badge:hover {
-  background-color: #555;
+.todo-snooze-btn {
+	margin-left: 10px;
 }
-
 
 
